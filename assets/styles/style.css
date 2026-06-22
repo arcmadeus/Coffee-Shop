@@ -1,0 +1,795 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+/* VARIABLES */
+
+:root {
+    --primary-color: #ffbf00;
+    --secondary-color: #5d4037;
+    --tertiary-color: #e65100;
+    --neutral-color: #121212;
+    --container-color: #201f1f;
+    --cream-color: #f5deb3;
+
+    /*========== Font and typography ==========*/
+    --primary-font-family: 'Noto-Serif', 'sans-serif';
+    --secondary-font-family: 'Inter', 'sans-serif';
+    --biggest-font-size: 2rem;
+    --bigger-font-size: 1.25rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: .938rem;
+    --small-font-size: .813rem;
+    --smaller-font-size: .75rem;
+
+    /*========== Font weight ==========*/
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semi-bold: 600;
+}
+
+/* ELEMENTS */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scrollbar-color: var(--neutral-color) var(--container-color);
+    scrollbar-width: thin;
+    scrollbar-base-color: var(--neutral-color);
+}
+
+input, textarea, button, body {
+    font-family: var(--secondary-font-family);
+    font-size: var(--normal-font-size);
+}
+
+h1,h2,h3,h4 {
+    color: var(--primary-color);
+    font-weight: 500;
+    font-family: var(--primary-font-family);
+    font-style: italic;
+}
+
+h1 {
+    font-size: var(--biggest-font-size);
+}
+
+h2 {
+  font-size: var(--bigger-font-size);
+  color: var(--cream-color); /* Wheat/Cream color for that coffee feel */
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+p {
+  font-size: var(--normal-font-size);
+  line-height: 1.6;
+  color: #a0a0a0; /* Soft grey so it's easy on the eyes */
+  margin: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img, svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* REUSABLES */
+.sec-container {
+    padding-block: 5rem 2rem;
+}
+
+.container {
+    max-width: 1120px;
+    margin-inline: 1.5rem;
+}
+
+.grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+span {
+    color: var(--primary-color)
+}
+
+button {
+    padding: 0.7rem;
+    width: 30%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color .4s, color .4s;
+}
+
+button:hover {
+    color: var(--secondary-color);
+}
+
+.button-primary {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+/* .button-primary:hover {
+    background-color: var(--secondary-color);
+    color: var(--neutral-color);
+} */
+
+.button-secondary {
+    background-color: var(--secondary-color);
+    color: var(--neutral-color);
+}
+
+/* .button-secondary:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+} */
+
+/* HEADERS and NAVS */
+.header {
+    position: fixed;
+    width: 100%;
+    background-color: var(--neutral-color);
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0px 3px 10px var(--primary-color);
+}
+
+.header-opacity {
+    opacity: 0.5;
+}
+
+
+
+.burger-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 2rem;
+    padding: 0.5rem;
+    width: 35px;
+    height: 35px;
+}
+
+.burger-toggle {
+    transform: translateX(-400%);
+}
+
+.burger-btn .burger-btn-img {
+    width: 24px;
+    height: 24px;
+    filter: invert(75%) sepia(74%) saturate(1516%) hue-rotate(356deg) brightness(103%) contrast(104%);
+    background-image: url('../img/act2/icons/menu-line.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+}
+
+.burger-btn:hover img {
+    filter: invert(39%) sepia(93%) saturate(1814%) hue-rotate(3deg) brightness(96%) contrast(97%);
+}
+
+
+.nav {
+    height: 3.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+}
+
+.nav-active {
+    color: var(--primary-color);
+}
+
+.nav-logo {
+    color: var(--secondary-color);
+    font-weight: var(--font-medium);
+    margin-left: 2.5rem;
+}
+
+.nav-logo span {
+    color: var(--primary-color);
+}
+
+.nav-menu {
+    position: fixed;
+    top: 3.5rem;
+    right: 0;
+    width: 300px;
+    height: calc(100vh - 3.5rem);
+    background-color: var(--neutral-color);
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0;
+}
+
+.nav-menu.nav-active {
+    transform: translateX(0);
+}
+
+.nav-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    padding: 1rem 2rem;
+}
+
+.nav_link {
+    display: block;
+    color: var(--secondary-color);
+    font-weight: var(--font-medium);
+    transition: color .4s;
+    font-size: 1.2rem;
+}
+
+.nav_link:hover {
+    color: var(--primary-color);
+}
+
+.nav_link {
+    color: var(--secondary-color);
+    font-weight: var(--font-medium);
+    transition: color .4s;
+}
+
+.nav_link:hover {
+    color: var(--primary-color);
+}
+
+.blur-header {
+    background-color: transparent;
+}
+
+.blur-header::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: hsla(0, 0%, 10%, .3);
+    backdrop-filter: blur(24px);
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* HOME CONTAINER */
+
+.home-container {
+  position: relative; 
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: var(--neutral-color); 
+  overflow: hidden; 
+  font-family: 'Inter', sans-serif; 
+}
+
+
+.glow-effect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: 0;
+  background-color: rgba(212, 139, 55, 0.15); 
+}
+
+
+.home-info {
+  position: relative;
+  z-index: 1; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  max-width: 1100px;
+  padding: 2rem;
+}
+
+.home-text-info {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 3rem;
+}
+
+/* Typography styling */
+.text-info {
+    gap: 3rem;
+}
+
+.text-info h2 {
+    font-size: 4rem;
+}
+
+.text-info p {
+    font-size: 1.25rem;
+}
+
+
+.vinyl img {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  animation: spin 4s linear infinite; 
+}
+
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* MENU CONTAINER*/
+
+.menu-container {
+    position: relative; 
+    min-height: 100vh;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    justify-content: space-evenly;
+    background-color: var(--neutral-color);
+    place-items: center;
+    height: auto;
+}
+
+.menu-container h2 {
+    font-size: var(--bigger-font-size);
+}
+
+.menu-container .glow-effect {
+    transform: translate(-50%, -50%);
+}
+
+
+.menu-items {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    place-content: center;
+    gap: 2rem;
+    justify-content: space-between;
+    width: 90%;
+}
+
+.blends-container {
+    background-image: url('../img/act2/signature-blend.png');
+    width: 100%;
+}
+
+.blends-container,
+.pastries-container {
+    background-color: var(--container-color);
+    background-size: cover;
+    background-position: center;
+    background-blend-mode:multiply;
+    background-repeat: no-repeat;
+    border: 1px solid black;
+    padding: 2rem;
+    border-radius: 25px;
+}
+
+.order-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-block: 2rem;
+}
+
+.pastries-container {
+    height: 100%;
+    background-image: url('../img/act2/signature-pastries.png');
+    gap: 0;
+}
+
+
+
+.order-item {
+    padding-block: 0.7rem;
+}
+
+.blends-container .order-item {
+    padding-block: 1.3rem;
+}
+
+.cost {
+    color: var(--cream-color);
+}
+
+/* MUSIC */
+.music-container {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: var(--neutral-color);
+    place-items: center;
+    grid-template-columns: 1fr 1fr;
+    max-height: 100vh;
+}
+
+.music-container .glow-effect {
+    transform: translate(25%, -50%);
+}
+
+.music-description {
+    display: flex;
+    flex-direction: column;
+    justify-self: start;
+    padding: 2rem;
+    align-items: flex-start;
+}
+
+.music-description h2{
+    font-size: 4rem;
+}
+
+.about-record h4 {
+    font-size: 1.25rem;
+}
+
+.about-record p {
+    font-size: var(--normal-font-size)
+}
+
+.about-record input {
+    width: 100%;
+    margin-block: 0.8rem;
+    color: var(--tertiary-color);
+}
+
+
+.music-player {
+    background-color: var(--container-color);
+    padding: 1.5rem;
+    border-radius: 25px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.change-music {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+.change-music .line {
+    width: 100%;
+    height: 1px;
+    background-color: var(--tertiary-color);
+}
+
+hr {
+    margin-block: 1rem;
+}
+
+/* Styling and animating the vinyl image */
+.vinyl-record {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.music-player .vinyl-record img {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  animation: spin 4s linear infinite; 
+  margin-bottom: 2rem;
+  align-self: center;
+
+}
+
+.button-record {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.button-record > button, .music-icons {
+    padding: 0;
+    margin: 0;
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    filter: invert(75%) sepia(74%) saturate(1516%) hue-rotate(356deg) brightness(103%) contrast(104%);
+    transition: filter 0.8s ease-in-out ease;
+}
+
+.button-record .play {
+    width:45px;
+    height:45px;
+}
+
+.music-selection {
+    width: 100%;
+}
+
+.pick-music > div:first-child {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.pick-music {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.pick-music button {
+    width: 15px;
+    height: 15px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    filter: invert(75%) sepia(74%) saturate(1516%) hue-rotate(356deg) brightness(103%) contrast(104%);
+}
+
+.pick-music-description {
+    padding: 2rem;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 1rem;
+
+}
+
+.progress-bar {
+  flex-grow: 1; 
+  appearance: none;
+  height: 6px;
+  background: var(--primary-color); 
+  border-radius: 3px;
+  outline: none;
+}
+
+.progress-bar::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--tertiary-color); 
+  cursor: pointer;
+  box-shadow: 0 0 2px rgba(0,0,0,0.5);
+}
+
+.choose-music {
+    width: 100%;
+}
+
+.music-container button:hover {
+    filter: invert(39%) sepia(93%) saturate(1814%) hue-rotate(3deg) brightness(96%) contrast(97%);
+    background-color: transparent;
+}
+
+.select-state-active {
+    filter: invert(39%) sepia(93%) saturate(1814%) hue-rotate(3deg) brightness(96%) contrast(97%);
+    background-color: transparent;
+}
+
+.active-loop {
+    filter: invert(39%) sepia(93%) saturate(1814%) hue-rotate(3deg) brightness(96%) contrast(97%);
+    background-color: transparent;
+}
+
+/* JOB PANELS */
+.job-container {
+    position: relative; 
+    min-height: 100vh;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    justify-content: space-evenly;
+    background-color: var(--neutral-color);
+    place-items: center;
+    gap: 1rem;
+}
+
+.job-container .glow-effect {
+    transform: translate(-50%, -100%);
+}
+
+.about-job {
+    display: grid;
+    grid-template-columns: 0.75fr 1.25fr;
+    gap: 1rem;
+    height: 100%;
+}
+
+
+.position-container {
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--container-color);
+    padding: 2rem;
+    border-radius: 25px;
+    margin-bottom: 2rem;
+}
+
+.position-container h1 {
+    font-size: 4.5rem;
+    text-align: center;
+    color: var(--cream-color);
+    font-weight: 600;
+}
+
+.position-container p {
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+.job-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.about-job {
+    display: grid;
+    width: 90%;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 1rem;
+    place-content: start;
+
+}
+
+.job {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 2rem;
+    height: auto;
+    padding: 2rem;
+    background-color: var(--container-color);
+    border-radius: 25px;
+}
+
+.job h2 {
+    font-size: 2rem;
+    margin-top: 0.5rem;
+}
+
+.music-band {
+    background-image: url('../img/act2/band.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+} 
+
+.lead-barista {
+    background-color: var(--secondary-color);
+    background-image: url('../img/act2/barista.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+}
+
+.job-description .img-icon {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    border: none;
+    filter: invert(75%) sepia(74%) saturate(1516%) hue-rotate(356deg) brightness(103%) contrast(104%);
+    transition: filter 0.8s ease-in-out ease;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.music-band .img-icon {
+    background-image: url('../img/act2/icons/dvd-fill.svg');
+}
+
+.lead-barista .img-icon {
+    background-image: url('../img/act2/icons/cup-fill.svg');
+}
+
+.other-jobs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 90%;
+    gap: 1rem;
+}
+
+.lounge-host {
+    border-left: 5px solid var(--primary-color);
+    border-top: 5px solid var(--primary-color);
+}
+
+.mixologist {
+    border-right: 5px solid var(--primary-color);
+    border-bottom: 5px solid var(--primary-color);
+}
+
+
+
+.lounge-host .img-icon {
+    background-image: url('../img/act2/icons/bard-fill.svg');
+}
+
+.manager .img-icon {
+    background-image: url('../img/act2/icons/admin-fill.svg');
+}
+
+.mixologist .img-icon {
+    background-image: url('../img/act2/icons/drinks-2-fill.svg');
+}
+
+/* FOOTER */
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--neutral-color);
+    height: auto;
+    padding-block: 1rem;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

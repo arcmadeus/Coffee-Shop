@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Late Night Vibes",
+        "author": "Rude Boy",
+        "fileLocation": "assets/music/Late-Night-Vibe.mp3",
+        "imageLocation": "assets/img/act2/music/late-night-vibe.jpg"
+    }, 
+    {
+        "name": "dreamy nightmares ♫",
+        "author": "Lilypichu",
+        "fileLocation": "assets/music/dreamy-nightmares.mp3",
+        "imageLocation": "assets/img/act2/music/dreamy-nightmares.jpg"
+    },
+    {
+        "name": "Lone World",
+        "author": "NINO!",
+        "fileLocation": "assets/music/Lone-World.mp3",
+        "imageLocation": "assets/img/act2/music/lone-world.png"
+    },
+    {
+        "name": "Starry Night",
+        "author": "Jordan Critz",
+        "fileLocation": "assets/music/Starry-Night.mp3",
+        "imageLocation": "assets/img/act2/music/starrynight.jpg"
+    },
+    {
+        "name": "Mocha",
+        "author": "Coffee Shop Jazz",
+        "fileLocation": "assets/music/Mocha.mp3",
+        "imageLocation": "assets/img/act2/music/mocha.jpg"
+    }
+]
